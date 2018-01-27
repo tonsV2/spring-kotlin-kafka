@@ -12,7 +12,7 @@ class KafkaProducerController(val kafkaTemplate: KafkaTemplate<String, String>) 
     @GetMapping("/person/{name}")
     fun getPerson(@PathVariable name: String): ResponseEntity<String> {
 //        val person = personRepository.findById(name)
-        val person = Optional.of("Some person name")
+        val person = Optional.of(name)
 
         return if (person.isPresent) {
             kafkaTemplate.send("Topic1", "GET /person/name OK > " + name)
