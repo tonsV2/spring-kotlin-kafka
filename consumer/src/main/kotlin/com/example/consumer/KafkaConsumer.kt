@@ -7,7 +7,7 @@ import org.springframework.kafka.annotation.KafkaListener
 class KafkaConsumer {
     @KafkaListener(topics = [TOPIC])
     fun receive(payload: String) {
-        LOGGER.info("Received payload='{}'", payload)
+        LOGGER.info("Received payload='$payload'")
     }
 
     companion object {

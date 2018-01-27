@@ -16,10 +16,10 @@ class KafkaProducerController(val kafkaTemplate: KafkaTemplate<String, String>) 
         val person = Optional.of(name)
 
         return if (person.isPresent) {
-            kafkaTemplate.send(TOPIC, "GET /person/name OK > " + name)
+            kafkaTemplate.send(TOPIC, "GET /person/name OK > $name")
             ResponseEntity.ok(person.get())
         } else {
-            kafkaTemplate.send(TOPIC, "GET /person/name BadRequest > " + name)
+            kafkaTemplate.send(TOPIC, "GET /person/name BadRequest > $name")
             ResponseEntity.badRequest().body(null)
         }
     }
