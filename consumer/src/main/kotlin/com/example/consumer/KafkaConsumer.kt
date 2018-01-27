@@ -1,10 +1,11 @@
 package com.example.consumer
 
+import com.example.consumer.KafkaConsumerConfig.Companion.TOPIC
 import org.slf4j.LoggerFactory
 import org.springframework.kafka.annotation.KafkaListener
 
 class KafkaConsumer {
-    @KafkaListener(topics = arrayOf("Topic1"))
+    @KafkaListener(topics = [TOPIC])
     fun receive(payload: String) {
         LOGGER.info("Received payload='{}'", payload)
     }

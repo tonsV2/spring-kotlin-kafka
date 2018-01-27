@@ -44,4 +44,8 @@ class KafkaConsumerConfig {
     fun kafkaConsumer(): KafkaConsumer {
         return KafkaConsumer()
     }
+
+    companion object {
+        const val TOPIC = "Topic1"
+    }
 }

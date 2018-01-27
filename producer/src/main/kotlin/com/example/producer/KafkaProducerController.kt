@@ -1,5 +1,6 @@
 package com.example.producer
 
+import com.example.producer.KafkaProducerConfiguration.Companion.TOPIC
 import org.springframework.http.ResponseEntity
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.web.bind.annotation.GetMapping
@@ -15,10 +16,10 @@ class KafkaProducerController(val kafkaTemplate: KafkaTemplate<String, String>) 
         val person = Optional.of(name)
 
         return if (person.isPresent) {
-            kafkaTemplate.send("Topic1", "GET /person/name OK > " + name)
+            kafkaTemplate.send(TOPIC, "GET /person/name OK > " + name)
             ResponseEntity.ok(person.get())
         } else {
-            kafkaTemplate.send("Topic1", "GET /person/name BadRequest > " + name)
+            kafkaTemplate.send(TOPIC, "GET /person/name BadRequest > " + name)
             ResponseEntity.badRequest().body(null)
         }
     }

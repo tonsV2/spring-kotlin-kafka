@@ -22,7 +22,7 @@ class KafkaProducerConfiguration {
     @Bean
     fun producerFactory(): ProducerFactory<String, String> {
         val configProps = HashMap<String, Any>()
-        configProps[ProducerConfig.BOOTSTRAP_SERVERS_CONFIG] = kafkaHost + ":" + port
+        configProps[ProducerConfig.BOOTSTRAP_SERVERS_CONFIG] = "$kafkaHost:$port"
         configProps[ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG] = StringSerializer::class.java
         configProps[ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG] = StringSerializer::class.java
         return DefaultKafkaProducerFactory(configProps)
@@ -33,4 +33,7 @@ class KafkaProducerConfiguration {
         return KafkaTemplate(producerFactory())
     }
 
+    companion object {
+        const val TOPIC = "Topic1"
+    }
 }
