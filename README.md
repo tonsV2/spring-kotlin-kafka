@@ -1,15 +1,14 @@
 # Motivation
 Simple Kafka "Hello world" application using Spring Boot 2.0 with Kotlin
 
-# Inspiration/Credits
- - https://thecuriousdev.org/getting-started-spring-kafka/
- - https://hub.docker.com/r/spotify/kafka/
-
-# Build both jars
+# Build both the producer and the consumer
 ```./gradlew bootJar```
 
 # Launch application
 ```docker-compose up```
+
+# Execute http request (using httpie)
+```http :8080/person/john```
 
 # Alternative individual approach
 
@@ -22,5 +21,7 @@ Simple Kafka "Hello world" application using Spring Boot 2.0 with Kotlin
 ## Run the consumer
 ```./gradlew consumer:bootRun```
 
-# Execute http request (using httpie)
-```http :8080/person/john```
+# Inspiration/Credits
+ - https://thecuriousdev.org/getting-started-spring-kafka/
+ - https://hub.docker.com/r/spotify/kafka/
+
