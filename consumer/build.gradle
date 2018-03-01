@@ -39,6 +39,7 @@ repositories {
 
 
 dependencies {
+	compile project(":shared")
 	compile('org.springframework.kafka:spring-kafka')
 	compile('org.springframework.boot:spring-boot-starter')
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jre8")

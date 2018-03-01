@@ -1,1 +1,1 @@
-include ':producer', ':consumer'
+include ':producer', ':consumer', ':shared'

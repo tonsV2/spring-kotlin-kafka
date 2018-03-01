@@ -1,8 +1,8 @@
 package com.example.consumer
 
+import com.example.shared.SharedConfiguration
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.common.serialization.StringDeserializer
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.kafka.annotation.EnableKafka
@@ -15,12 +15,9 @@ import java.util.*
 
 @EnableKafka
 @Configuration
-class KafkaConsumerConfig {
-    @Value("\${kafka.host:localhost}")
-    private val host: String? = null
-
-    @Value("\${kafka.port:9092}")
-    private val port: Int = 0
+class KafkaConsumerConfig(sharedConfiguration: SharedConfiguration) {
+    private val host = sharedConfiguration.host
+    private val port = sharedConfiguration.port
 
     @Bean
     fun consumerConfigs(): Map<String, Any> {

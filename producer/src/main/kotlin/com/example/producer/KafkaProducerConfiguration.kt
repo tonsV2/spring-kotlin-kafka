@@ -1,8 +1,8 @@
 package com.example.producer
 
+import com.example.shared.SharedConfiguration
 import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.common.serialization.StringSerializer
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.kafka.core.DefaultKafkaProducerFactory
@@ -11,12 +11,9 @@ import org.springframework.kafka.core.ProducerFactory
 import java.util.*
 
 @Configuration
-class KafkaProducerConfiguration {
-    @Value("\${kafka.host:localhost}")
-    private val host: String? = null
-
-    @Value("\${kafka.port:9092}")
-    private val port: Int = 0
+class KafkaProducerConfiguration(sharedConfiguration: SharedConfiguration) {
+    private val host = sharedConfiguration.host
+    private val port = sharedConfiguration.port
 
     @Bean
     fun producerFactory(): ProducerFactory<String, String> {
