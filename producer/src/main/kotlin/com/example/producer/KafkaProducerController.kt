@@ -10,6 +10,7 @@ import java.util.*
 
 @RestController
 class KafkaProducerController(val kafkaTemplate: KafkaTemplate<String, String>) {
+// TODO: Should be post
     @GetMapping("/person/{name}")
     fun getPerson(@PathVariable name: String): ResponseEntity<String> {
 //        val person = personRepository.findById(name)
