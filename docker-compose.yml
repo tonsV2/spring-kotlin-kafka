@@ -3,10 +3,8 @@ services:
   kafka:
     image: spotify/kafka
   producer:
-    image: openjdk:8-jre-alpine
-    command: java -jar /app/build/libs/producer-0.0.1-SNAPSHOT.jar
-    volumes:
-      - ./producer:/app
+    build:
+      context: producer/
     ports:
       - 8080:8080
     depends_on:
@@ -15,10 +13,8 @@ services:
       kafka.host: kafka
       kafka.port: 9092
   consumer:
-    image: openjdk:8-jre-alpine
-    command: java -jar /app/build/libs/consumer-0.0.1-SNAPSHOT.jar
-    volumes:
-      - ./consumer:/app
+    build:
+      context: consumer/
     depends_on:
       - kafka
     environment:
