@@ -7,9 +7,6 @@ Simple Kafka "Hello world" application using Spring Boot 2.0 with Kotlin
 # Execute http request (using httpie)
 ```http :8080/person/john```
 
-# Build producer and consumer
-```./gradlew bootJar```
-
 # Alternative manual approach
 
 ## Run Kafka
